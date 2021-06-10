@@ -3,6 +3,7 @@ package com.technipixl.evand1.exo3
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.TextKeyListener.clear
 import android.view.Menu
 import android.view.View
 import android.widget.Button
@@ -19,6 +20,7 @@ class MainActivity : Activity(), View.OnClickListener {
 
     override fun onStart() {
         super.onStart()
+        clearer()
         fillData()
         updateUI()
     }
@@ -27,6 +29,9 @@ class MainActivity : Activity(), View.OnClickListener {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
+    }
+    private fun clearer(){
+        listItems.removeAll(listItems)
     }
 
     private fun fillData() {
@@ -41,6 +46,7 @@ class MainActivity : Activity(), View.OnClickListener {
         listItems.add("Element 9")
         listItems.add("Element 10")
     }
+
 
     private val stringData: String
         get() {
@@ -64,5 +70,6 @@ class MainActivity : Activity(), View.OnClickListener {
     override fun onClick(v: View) {
         val intentSecondActivity = Intent(this, SecondActivity::class.java)
         startActivity(intentSecondActivity)
+        hideContentImageView()
     }
 }
